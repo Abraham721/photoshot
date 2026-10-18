@@ -1,40 +1,20 @@
-# 변경 기록
+# Changelog
 
-## 0.16.0 · 2026-10-01 · 조정 레이어 06~16 누적 공개
+## 0.16.1 — October 18, 2026
 
-- 색조/채도, 색상 균형, 흑백, 포토 필터, 채널 혼합, 컬러 룩업, 반전, 포스터화, 한계값, 그레이디언트 맵, 선택 색상과 밝기/대비 전용 조정을 공개했습니다.
-- 27개 혼합 모드와 고급 조절 패널, 자체 제작 프리셋, CUBE/3DL/LOOK/CSP/ICC 읽기 및 JSON 설정 저장을 연결했습니다.
-- 새 곡선·노출은 개선된 계산을 사용하며 이전 v0.5.0 프로젝트의 계산은 유지합니다.
-- 각 회차의 사용 문서·조작 패널 이미지, 자체 제작 LUT 예제, 알고리즘·합성·ICC·호환성 검사를 포함합니다.
-- v0.6.0~v0.15.0 태그는 생성하지 않습니다. 이번 공개분 전체는 v0.16.0에 포함됩니다.
+- Publish the complete revised English development series, Parts 1–10.
+- Add full code excerpts checked against their pinned source revisions, local screenshots, and before/after images.
+- Replace the current repository introduction and development prose with the English edition, and update repository URLs to `https://github.com/Abraham721/photoshot`.
+- Keep the `v0.16.0` editor source and existing third-party license files unchanged. This release changes documentation and package metadata, not editing algorithms.
+- Preserve previous commits and tags. Historical release-episode numbering differs from the current ten-part journal.
 
-## 0.5.0 · 2026-09-28 · 05 활기
+## Earlier source releases
 
-- 활기·채도·피부색 보호 조정을 공개했습니다.
+- **0.16.0 — October 1, 2026:** cumulative public snapshot with all 16 adjustment layers, 27 blend modes, LUT/ICC import and compatibility checks.
+- **0.5.0 — September 28, 2026:** vibrance, saturation and the skin-tone response option.
+- **0.4.0 — September 23, 2026:** exposure controls, droppers and presets.
+- **0.3.0 — September 23, 2026:** curves controls and histogram integration.
+- **0.2.0 — September 23, 2026:** levels and histograms.
+- **0.1.0 — September 19, 2026:** initial public editor, layers and masks.
 
-## 0.4.0 · 2026-09-23 · 04 노출
-
-- 노출 ±20 EV, 오프셋 ±0.5, 감마 0.01–9.99, 미세 수치 입력, 스포이드, 기본 프리셋과 JSON 설정 저장·불러오기.
-- 독립 편집기의 조정 레이어, 합성·저장·내보내기에 연결했습니다.
-- AI 서버와 비공개 조정은 제외하고 기존 이용 조건을 유지합니다.
-
-## 0.3.0 · 2026-09-23 · 03 곡선
-
-- 채널별 히스토그램, 제어점·연필·부드럽게, 격자·채널 겹쳐 보기, 자동 명암·색상 보정, 검정·회색·흰색 스포이드, 사진에서 제어점 추가, JSON 설정 저장·불러오기.
-- 독립 편집기의 조정 레이어, 합성·저장·내보내기에 연결했습니다.
-- AI 서버와 비공개 조정은 제외하고 기존 이용 조건을 유지합니다.
-
-## 0.2.0 · 2026-09-23 · 02 레벨·히스토그램
-
-- RGB·R/G/B 히스토그램, 로그 표시, 입력 검정·중간톤·흰색 손잡이, 출력 범위와 숫자 입력.
-- 독립 편집기의 조정 레이어, 합성·저장·내보내기에 연결했습니다.
-- AI 서버와 비공개 조정은 제외하고 기존 이용 조건을 유지합니다.
-
-## 0.1.0 · 2026-09-19 · 01 기본 도구·레이어·마스크
-
-- 작업기 01에 해당하는 기본 편집기 소스를 독립 Vite 프로젝트로 정리했습니다.
-- 이동·자르기·문자·브러시·지우개·레이어·마스크·프로젝트 저장·PNG/JPG 내보내기를 포함합니다.
-- Photoshot 이름과 공식 실행·사용법 링크를 연결했습니다.
-- 조정 레이어와 AI 작업 서버는 포함하지 않습니다.
-- 마스크 처리 테스트와 설치·빌드 검증을 포함합니다.
-- 코드 공개만 진행하며, 고유 소스에 오픈소스 라이선스를 부여하지 않았습니다.
+The original detailed release documents remain in the historical commits. These entries summarize prior records; they do not assert that all historical tests were rerun for each old release today.

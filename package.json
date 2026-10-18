@@ -1,6 +1,6 @@
 {
   "name": "photoshot",
-  "version": "0.16.0",
+  "version": "0.16.1",
   "private": true,
   "type": "module",
   "license": "UNLICENSED",
@@ -8,7 +8,7 @@
   "homepage": "https://slohero.com/photoshot/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dodohan0721/photoshot.git"
+    "url": "https://github.com/Abraham721/photoshot.git"
   },
   "engines": {
     "node": ">=22.13.0"

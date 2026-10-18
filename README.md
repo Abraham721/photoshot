@@ -1,155 +1,83 @@
-# Photoshot · 조정 레이어 01~16
+# Photoshot
 
-브라우저에서 사진을 열고, 글자를 더하고, 레이어와 마스크로 편집하는 무료 웹 사진 편집기입니다.
-Photoshot을 만드는 과정을 코드와 사용 화면으로 공개합니다.
+**A free browser photo editor, and the engineering record of connecting existing technology with AI.**
 
-**[Photoshot 사용하기](https://slohero.com/photoshot/) · [편집기 바로 열기](https://slohero.com/photoshot/editor/) · [01 도구별 사용법과 작업기](https://slohero.com/photoshot/guides/basic-tools/)**
+[Try Photoshot](https://slohero.com/photoshot/editor/) · [Read the English development series](docs/devlog/README.md) · [Release v0.16.1](https://github.com/Abraham721/photoshot/releases/tag/v0.16.1)
 
-![Photoshot 01의 이미지, 문자, 레이어와 마스크 편집 화면](docs/images/editor-preview.png)
+![Actual Photoshot workspace](docs/devlog/images/01-workspace.webp)
 
-> 기본 도구·레이어·마스크에 공개된 조정 레이어를 추가한 독립 실행 소스입니다. [COPYRIGHT.md](COPYRIGHT.md)의 기존 이용 조건을 유지하며, 오픈소스 라이선스를 부여하지 않았습니다.
+## What's new in v0.16.1
 
-## 공개 회차
+The English development series now includes Parts 1–10, with full code excerpts, pinned source links, actual workspace screenshots and before/after examples. This is a documentation and repository-metadata update to the public `v0.16.0` source snapshot. It does not claim new editing algorithms or parity with the current production service.
 
-**최신 v0.16.0 · 2026-10-01**: 06~16편을 추가하고 밝기/대비를 포함한 16종 조정 레이어를 모두 연결했습니다. 06~15의 별도 태그는 만들지 않았으며 아래 문서로 각 회차를 확인할 수 있습니다.
+The original Photoshot implementation remains public source with **no open-source license granted**. See [COPYRIGHT.md](COPYRIGHT.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
-01 영상은 밝기/대비를 소개합니다. GitHub의 최초 01 공개본은 기본 도구·레이어·마스크이며, 밝기/대비 전용 조정 레이어는 이번 누적본에 포함됩니다.
+## English development series: Parts 1–10
 
-| 버전 | 기능 및 사용법                                       |
-| ---- | ---------------------------------------------------- |
-| 01   | [기본 도구·레이어·마스크](docs/episode-01-readme.md) |
-| 02   | [레벨·히스토그램](docs/02-levels.md)                 |
-| 03   | [곡선](docs/03-curves.md)                            |
-| 04   | [노출](docs/04-exposure.md)                          |
-| 05   | [활기·채도·피부색 보호](docs/05-vibrance.md)         |
-| 06   | [색조채도](docs/06-hue-saturation.md)                |
-| 07   | [색상균형](docs/07-color-balance.md)                 |
-| 08   | [흑백](docs/08-black-white.md)                       |
-| 09   | [포토필터](docs/09-photo-filter.md)                  |
-| 10   | [채널혼합](docs/10-channel-mixer.md)                 |
-| 11   | [컬러룩업](docs/11-color-lookup.md)                  |
-| 12   | [반전](docs/12-invert.md)                            |
-| 13   | [포스터화](docs/13-posterize.md)                     |
-| 14   | [임계값](docs/14-threshold.md)                       |
-| 15   | [그레이디언트맵](docs/15-gradient-map.md)            |
-| 16   | [선택색상](docs/16-selective-color.md)               |
+| Part | Article |
+| --- | --- |
+| 01 | [Existing Code, Connected with AI](docs/devlog/01-basic-tools.md) |
+| 02 | [Connecting Existing Contrast Code with AI](docs/devlog/02-brightness-contrast.md) |
+| 03 | [Assembling Familiar Levels Math into a Tool](docs/devlog/03-levels-histogram.md) |
+| 04 | [Connecting a GitHub Curves Idea with AI](docs/devlog/04-curves.md) |
+| 05 | [Reusing the Foundation for Exposure](docs/devlog/05-exposure.md) |
+| 06 | [From Existing Vibrance Code to Integration with AI](docs/devlog/06-vibrance.md) |
+| 07 | [Connecting Color Selection to Existing Code with AI](docs/devlog/07-hue-saturation.md) |
+| 08 | [Connecting Known Color Balance Behavior with AI](docs/devlog/08-color-balance.md) |
+| 09 | [Extending Existing Color Code into Black & White](docs/devlog/09-black-white.md) |
+| 10 | [Connecting Existing Technology into an Editor with AI](docs/devlog/10-photo-filter.md) |
 
-태그 `v0.2.0`, `v0.3.0`, `v0.4.0`, `v0.5.0`, `v0.16.0`은 공개된 회차별 누적 버전입니다. 이전 01 소스는 최초 커밋에 보존되어 있습니다.
+These article numbers follow the current journal order. Historical source-release episode numbering differs; old commits and tags remain available. The prose is English. Verbatim code excerpts and the existing source editor retain their original UI strings.
 
-## 무엇을 할 수 있나요?
+## Run locally
 
-| 도구          | 사용 방법                                                 |
-| ------------- | --------------------------------------------------------- |
-| 이미지 열기   | PNG·JPG·WebP 파일을 열거나 작업 화면에 끌어놓기           |
-| 이동·변형     | 레이어를 드래그하고 위치·너비·높이·회전값 조절            |
-| 자르기        | 영역을 드래그한 뒤 **자르기 적용**                        |
-| 문자          | 캔버스를 클릭해 글자를 추가하고 내용·크기·색상 변경       |
-| 브러시·지우개 | 선택한 레이어에 그리거나 지우기                           |
-| 레이어        | 추가·복제·삭제·순서 변경·숨기기·잠금·불투명도·혼합 모드   |
-| 레이어 마스크 | 원본을 유지하면서 브러시로 숨기기·복원, 마스크 반전·끄기  |
-| 선택 영역     | 사각형 선택 영역으로 레이어 마스크 만들기                 |
-| 저장          | PNG·JPG 내보내기와 `.layerstudio` 프로젝트 저장·다시 열기 |
-
-개별 레이어의 기본 밝기·대비·채도 조절도 포함됩니다. 별도의 조정 레이어는 **조정 추가** 메뉴에서 사용합니다.
-
-## 내 컴퓨터에서 실행하기
-
-Node.js **24 LTS 권장**(최소 22.13.0)과 npm이 필요합니다. 아래 명령은 로컬 실행 절차입니다.
+Use Node.js 24 (minimum 22.13.0) and npm.
 
 ```sh
-git clone https://github.com/dodohan0721/photoshot.git
+git clone https://github.com/Abraham721/photoshot.git
 cd photoshot
 npm ci
 npm run dev
 ```
 
-터미널에 표시되는 로컬 주소를 여세요. 기본 주소는 `http://127.0.0.1:5173`입니다.
-서버·API 키·GPU 설정 없이 브라우저에서 실행됩니다.
+Open the local URL printed by Vite, normally `http://127.0.0.1:5173`. The standalone editor needs no backend or API key.
 
 ```sh
-npm test       # 마스크 숨기기/복원, 비파괴 편집, 합성, 프로젝트 복원 검증
-npm run build  # TypeScript 검사 및 정적 빌드
+npm test
+npm run build
 npm run preview
 ```
 
-`npm run build` 결과는 `dist/`에 생성됩니다. HTML 파일을 직접 더블클릭하지 말고 개발 서버 또는 미리보기 서버로 열어주세요.
+The build is written to `dist/`. Use the development or preview server rather than opening `index.html` directly.
 
-## 사용법
+## What this source snapshot includes
 
-[도구별 빠른 사용법](docs/basic-tools.md) · [사진으로 보는 전체 작업기 01](https://slohero.com/photoshot/guides/basic-tools/)
+- Image import, crop, text, brush/eraser, layer transforms and non-destructive masks.
+- Project save/reopen, undo/redo and PNG/JPG export.
+- Sixteen adjustment types, including brightness/contrast, levels, curves, exposure, vibrance, hue/saturation, color balance, black-and-white, photo filters and channel mixing.
+- Layer opacity, clipping and 27 blend modes; CUBE/3DL/LOOK/CSP and limited ICC lookup support.
+- Tests for masks, alpha, compositing, saved-project compatibility, adjustments, LUT/ICC parsing and transformations.
 
-- `V`: 이동 / `M`: 사각형 선택 / `C`: 자르기
-- `B`: 브러시 / `E`: 지우개 / `T`: 문자 / `H`: 손 도구
-- `0`: 화면에 맞추기
-- `Ctrl/Cmd + Z`: 실행 취소 / `Ctrl/Cmd + Shift + Z`: 다시 실행
-- `Ctrl/Cmd + S`: 프로젝트 저장 / `Ctrl/Cmd + D`: 레이어 복제
+## Scope and limitations
 
-## 데이터와 지원 범위
+This public snapshot is separate from the larger production application. It supports RGB 8-bit documents, a canvas dimension of up to 4096 pixels, up to 50 layers and image inputs up to 25 MB per file. PSD, RAW, CMYK, Camera Raw, AI layer separation and the production backend are outside this snapshot.
 
-- 이미지 편집은 브라우저 안에서 처리합니다. 이 소스에는 이미지 업로드 서버나 분석 추적 코드가 없습니다.
-- 작업은 현재 브라우저의 IndexedDB에 자동 저장됩니다. 브라우저 데이터가 지워지면 사라질 수 있으므로 `.layerstudio` 파일도 저장하세요.
-- 독립 공개본은 `photoshot-adjustments` 저장 공간을 사용하므로 기존 서비스의 자동 저장 문서를 덮어쓰지 않습니다.
-- RGB 8비트, 캔버스 한 변 최대 4096px, 최대 50개 레이어를 지원합니다. 이미지 입력은 파일당 최대 25MB입니다.
-- PSD·RAW·CMYK와 AI 레이어 분리는 포함하지 않습니다. 16종 조정 레이어를 지원하며, 별도 기능인 Camera Raw와 전체 홈페이지 운영 구성은 포함하지 않습니다.
-- 미리보기와 내보내기는 같은 Canvas 2D 합성기를 사용합니다. 데스크톱 브라우저를 권장합니다.
-- 폰트·브라우저·혼합 모드에 따라 미리보기와 결과에 차이가 있을 수 있습니다. 저장된 PNG/JPG를 확인하세요.
-- 이 저장소는 기본 편집과 공개된 조정 기능을 독립 실행하도록 정리한 공개본이며, 전체 SLOHERO 홈페이지나 운영 서버 구성은 포함하지 않습니다.
+Edits are processed in the browser. Automatic recovery uses IndexedDB; keep exported `.layerstudio` project files because browser data can be cleared. The standalone snapshot uses its own `photoshot-adjustments` storage name. Fonts, browser behavior and blend modes can affect rendered results.
 
-## 코드 구성
+Photoshot is an independent project, not an Adobe product. A free editor is not a free distribution of Adobe Photoshop, and example comparisons do not establish full feature or pixel equivalence.
+
+## Project layout
 
 ```text
-src/editor.tsx     도구, 속성 패널, 레이어 목록, 실행 취소와 파일 처리
-src/document.ts   문서 형식, 레이어·마스크 합성, 저장과 불러오기
-src/stage.tsx      Canvas 2D 기반 편집 화면
-src/styles.css    편집기 공통 스타일
-src/theme.css     밝은 테마
+src/                 Editor UI, document model and rendering/adjustment code
+src/vendor/lcms/     Bundled ICC engine and its original license notices
+tests/               Rendering, adjustment and compatibility checks
+docs/devlog/         English development articles 1–10 and local images
+docs/examples/       Small LUT examples
 ```
 
-브랜드 표시는 Photoshot으로 정리하고, 기존 프로젝트와의 호환성을 위해 `.layerstudio` 파일명과 문서 식별자는 유지했습니다.
-독립 실행본은 시스템 글꼴을 사용합니다.
+## Credits and rights
 
-## 권리 및 문의
+Created by [SLOHERO](https://slohero.com/). React, early PixiJS usage, later Canvas composition and third-party color components are described with their distinct roles in the articles. Referenced implementations are not presented as copied dependencies unless supported by the development record.
 
-Photoshot 고유 소스에 오픈소스 라이선스를 부여하지 않았습니다. [권리 안내](COPYRIGHT.md)와 [외부 구성요소](THIRD_PARTY_NOTICES.md)를 참고하세요.
-Photoshot은 Adobe Photoshop과 별개의 독립 프로젝트입니다.
-
-버그를 발견하면 GitHub Issues에 재현 과정과 브라우저 정보를 남겨주세요. 개인 사진이나 비밀 정보는 첨부하지 마세요.
-제작: [SLOHERO](https://slohero.com/)
-
----
-
-## English
-
-**Photoshot** is a free browser-based photo editor with text, painting, cropping, layers and non-destructive layer masks.
-This repository publishes cumulative episode snapshots. It runs locally with React, TypeScript and Vite; no backend, API key or GPU worker is required.
-
-**[Try Photoshot](https://slohero.com/photoshot/) · [Visual guide](https://slohero.com/photoshot/guides/basic-tools/)**
-
-Use Node.js 24, run `npm ci`, then `npm run dev`. `npm test` checks masks and compositing; `npm run build` type-checks and builds the static app.
-All 16 adjustment layers are included. Episodes 06–16 were published together in v0.16.0; there are no separate v0.6.0–v0.15.0 tags. AI layer separation, Camera Raw and the production site backend are excluded.
-
-**Public source, no open-source license granted.** See [COPYRIGHT.md](COPYRIGHT.md). Third-party dependencies retain their own licenses.
-
-## 공개본 검증
-
-2026-09-23 기준 각 회차의 타입 검사와 정적 빌드, 마스크·프로젝트 복원·알파 보존·조정 합성 검사를 통과했습니다. 브라우저에서 메뉴 범위, 히스토그램, 수치 변경, 실행 취소/다시 실행, PNG 내보내기, 곡선 스포이드와 설정 저장, 노출 프리셋을 확인했습니다.
-
-| 02 레벨                            | 03 곡선                            | 04 노출                              |
-| ---------------------------------- | ---------------------------------- | ------------------------------------ |
-| ![레벨](docs/images/02-levels.png) | ![곡선](docs/images/03-curves.png) | ![노출](docs/images/04-exposure.png) |
-
-## 05 활기 · 2026-09-28
-
-활기와 채도를 -100~100 범위에서 조절하고 피부색 보호를 켜거나 끌 수 있습니다. 아래 레이어/클리핑, 마스크, 불투명도, 전후 비교, 실행 취소와 프로젝트 저장에 연결했습니다.
-
-[사진으로 보는 활기 사용법](https://slohero.com/photoshot/guides/vibrance/) · [05 기능 문서](docs/05-vibrance.md)
-
-피부색 보호 모드는 합성 RGB 샘플에서 측정한 응답을 보간합니다. Photoshop과 모든 이미지에서 동일한 결과를 보장하지 않으며, Adobe 프리셋이나 프로그램을 포함하지 않습니다. 기존 02~04 알고리즘과 이전 태그는 유지했습니다.
-
-## 06~16 누적 공개 · 2026-10-01
-
-16종 조정, 27개 혼합 모드, 색상 범위 선택, 자동 흑백, 다중 그레이디언트, LUT/ICC 읽기와 설정 저장을 포함합니다. 컬러룩업은 CUBE·3DL·LOOK·CSP와 제한된 ICC 유형을 지원합니다. [정확한 지원 범위](docs/11-color-lookup.md)를 확인하세요.
-
-새로 만드는 곡선·노출 등은 운영 편집기의 개선된 계산을 사용합니다. v0.5.0에서 저장한 조정 데이터의 기존 계산은 유지하며, 실제 픽셀 일치 회귀 검사에 포함했습니다. 기존 태그는 변경하지 않았습니다.
-
-테스트는 마스크·클리핑·투명도·저장 복원, 16종 조정, LUT 축 순서와 보간, 손상된 파일 거부, ICC 변환과 이전 공개 프로젝트 호환을 검사합니다. LittleCMS의 원본 라이선스는 [외부 구성요소 안내](THIRD_PARTY_NOTICES.md)에 연결했습니다.
+The demo portraits are AI-generated; editor screenshots and outputs are actual Photoshot results. Third-party libraries keep their own licenses. For use of original Photoshot code beyond rights granted by applicable law and GitHub's terms, contact the creator. Report reproducible issues without including private photos or credentials.
