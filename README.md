@@ -2,32 +2,32 @@
 
 **A free browser photo editor, and the engineering record of connecting existing technology with AI.**
 
-[Try Photoshot](https://slohero.com/photoshot/editor/) · [Read the English development series](docs/devlog/README.md) · [Release v0.16.1](https://github.com/Abraham721/photoshot/releases/tag/v0.16.1)
+[Try Photoshot](https://slohero.com/photoshot/editor/) · [Read the engineering notes](docs/devlog/README.md) · [Release v0.16.2](https://github.com/Abraham721/photoshot/releases/tag/v0.16.2)
 
 ![Actual Photoshot workspace](docs/devlog/images/01-workspace.webp)
 
-## What's new in v0.16.1
+## What's new in v0.16.2
 
-The English development series now includes Parts 1–10, with full code excerpts, pinned source links, actual workspace screenshots and before/after examples. This is a documentation and repository-metadata update to the public `v0.16.0` source snapshot. It does not claim new editing algorithms or parity with the current production service.
+Parts 1–10 are now concise English engineering notes: implementation boundaries, selected code, revision compatibility and validation scope. Each note links to its full website article. The website remains the complete development journal; Naver carries the development narrative in accessible Korean, with less code detail.
 
-The original Photoshot implementation remains public source with **no open-source license granted**. See [COPYRIGHT.md](COPYRIGHT.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+This release changes documentation and version metadata only. Editor implementation remains the public v0.16.0 snapshot. Original Photoshot code is public source without an open-source license grant; see [COPYRIGHT.md](COPYRIGHT.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
-## English development series: Parts 1–10
+## Engineering notes: Parts 1–10
 
-| Part | Article |
-| --- | --- |
-| 01 | [Existing Code, Connected with AI](docs/devlog/01-basic-tools.md) |
-| 02 | [Connecting Existing Contrast Code with AI](docs/devlog/02-brightness-contrast.md) |
-| 03 | [Assembling Familiar Levels Math into a Tool](docs/devlog/03-levels-histogram.md) |
-| 04 | [Connecting a GitHub Curves Idea with AI](docs/devlog/04-curves.md) |
-| 05 | [Reusing the Foundation for Exposure](docs/devlog/05-exposure.md) |
-| 06 | [From Existing Vibrance Code to Integration with AI](docs/devlog/06-vibrance.md) |
-| 07 | [Connecting Color Selection to Existing Code with AI](docs/devlog/07-hue-saturation.md) |
-| 08 | [Connecting Known Color Balance Behavior with AI](docs/devlog/08-color-balance.md) |
-| 09 | [Extending Existing Color Code into Black & White](docs/devlog/09-black-white.md) |
-| 10 | [Connecting Existing Technology into an Editor with AI](docs/devlog/10-photo-filter.md) |
+| Part | Technical focus |
+|---|---|
+| 01 | [Layer state, reversible masks, and a shared compositor](docs/devlog/01-basic-tools.md) |
+| 02 | [Brightness/contrast: ordered response sampling and LUT compilation](docs/devlog/02-brightness-contrast.md) |
+| 03 | [Levels: transfer function, inverse handle mapping, and alpha-weighted histograms](docs/devlog/03-levels-histogram.md) |
+| 04 | [Curves: revisioned interpolation and channel-table order](docs/devlog/04-curves.md) |
+| 05 | [Exposure: EV scaling, conversion space, and saved revisions](docs/devlog/05-exposure.md) |
+| 06 | [Vibrance: HSL gain versus sampled RGB response](docs/devlog/06-vibrance.md) |
+| 07 | [Hue/saturation: circular distance, feathering, and revisioned response](docs/devlog/07-hue-saturation.md) |
+| 08 | [Color balance: revision branches and sequential tonal responses](docs/devlog/08-color-balance.md) |
+| 09 | [Black & white: six hue weights, neutral invariance, and tint](docs/devlog/09-black-white.md) |
+| 10 | [Photo filter: compiled color matrix versus layer compositing](docs/devlog/10-photo-filter.md) |
 
-These article numbers follow the current journal order. Historical source-release episode numbering differs; old commits and tags remain available. The prose is English. Verbatim code excerpts and the existing source editor retain their original UI strings.
+Historical source-release episode numbering differs from the current journal order. Source UI strings remain unchanged.
 
 ## Run locally
 

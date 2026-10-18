@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.16.2 — Channel-specific editorial update
+
+- Condense English Parts 1–10 into implementation-focused notes with pinned code excerpts.
+- Link each note to its full website article; separate technical notes from the general-reader Naver edition.
+- Preserve editor source, tests, source history and license notices.
+
 ## 0.16.1 — October 18, 2026
 
 - Publish the complete revised English development series, Parts 1–10.

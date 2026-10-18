@@ -1,24 +1,17 @@
-# Building a Free Photoshop Alternative
+# Photoshot engineering notes — Parts 1–10
+Concise implementation notes for the public editor snapshot. Each entry links to the full website article for development context and photo examples.
+| Part | Technical focus |
+|---|---|
+| 01 | [Layer state, reversible masks, and a shared compositor](01-basic-tools.md) |
+| 02 | [Brightness/contrast: ordered response sampling and LUT compilation](02-brightness-contrast.md) |
+| 03 | [Levels: transfer function, inverse handle mapping, and alpha-weighted histograms](03-levels-histogram.md) |
+| 04 | [Curves: revisioned interpolation and channel-table order](04-curves.md) |
+| 05 | [Exposure: EV scaling, conversion space, and saved revisions](05-exposure.md) |
+| 06 | [Vibrance: HSL gain versus sampled RGB response](06-vibrance.md) |
+| 07 | [Hue/saturation: circular distance, feathering, and revisioned response](07-hue-saturation.md) |
+| 08 | [Color balance: revision branches and sequential tonal responses](08-color-balance.md) |
+| 09 | [Black & white: six hue weights, neutral invariance, and tint](09-black-white.md) |
+| 10 | [Photo filter: compiled color matrix versus layer compositing](10-photo-filter.md) |
 
-Ten English development articles about Photoshot: existing libraries and image-processing ideas, the integration written with AI, and the limits that remain.
-
-This edition follows the current editorial order: Part 1 covers layers and masks, Part 2 brightness/contrast, and Part 10 photo filters. Historical software-release episode numbers used a different sequence. Article numbers are not application version numbers.
-
-| Part | Article |
-| --- | --- |
-| 01 | [Existing Code, Connected with AI](01-basic-tools.md) |
-| 02 | [Connecting Existing Contrast Code with AI](02-brightness-contrast.md) |
-| 03 | [Assembling Familiar Levels Math into a Tool](03-levels-histogram.md) |
-| 04 | [Connecting a GitHub Curves Idea with AI](04-curves.md) |
-| 05 | [Reusing the Foundation for Exposure](05-exposure.md) |
-| 06 | [From Existing Vibrance Code to Integration with AI](06-vibrance.md) |
-| 07 | [Connecting Color Selection to Existing Code with AI](07-hue-saturation.md) |
-| 08 | [Connecting Known Color Balance Behavior with AI](08-color-balance.md) |
-| 09 | [Extending Existing Color Code into Black & White](09-black-white.md) |
-| 10 | [Connecting Existing Technology into an Editor with AI](10-photo-filter.md) |
-
-The articles preserve the distinction between packages actually used, external implementations or documentation consulted, and Photoshot code written or revised with AI. Code excerpts are verbatim and link to the original commit or `v0.16.0`. Korean strings inside source excerpts and the existing editor UI are retained as source evidence; the editorial prose is English.
-
-The example portraits are AI-generated. Workspace screenshots and processed results were produced with Photoshot. They illustrate the stated settings, not a claim of complete Adobe Photoshop equivalence. Earlier test results described in an article are historical records, not new test runs.
-
-[Repository and local setup](../../README.md) · [Current website journal](https://slohero.com/photoshot/journal/)
+These notes cover implementation contracts, selected code excerpts, compatibility decisions and validation scope. They do not duplicate the full narrative. Source links pin existing commits or v0.16.0; editorial updates do not change the editor implementation.
+[Website journal](https://slohero.com/photoshot/journal/?lang=en) · [Repository setup](../../README.md)
