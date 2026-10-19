@@ -8,11 +8,11 @@
 
 ## Engineering updates
 
-Parts 1–12 are now concise English engineering notes: implementation boundaries, selected code, revision compatibility and validation scope. Each note links to its full website article. The website remains the complete development journal; Naver carries the development narrative in accessible Korean, with less code detail.
+Parts 1–13 are now concise English engineering notes: implementation boundaries, selected code, revision compatibility and validation scope. Each note links to its full website article. The website remains the complete development journal; Naver carries the development narrative in accessible Korean, with less code detail.
 
 These editorial updates extend the engineering notes. Editor implementation remains the public v0.16.0 snapshot. Original Photoshot code is public source without an open-source license grant; see [COPYRIGHT.md](COPYRIGHT.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
-## Engineering notes: Parts 1–12
+## Engineering notes: Parts 1–13
 
 | Part | Technical focus |
 |---|---|
@@ -28,6 +28,7 @@ These editorial updates extend the engineering notes. Editor implementation rema
 | 10 | [Photo filter: compiled color matrix versus layer compositing](docs/devlog/10-photo-filter.md) |
 | 11 | [Channel mixer: RGB weights, constants and monochrome](docs/devlog/11-channel-mixer.md) |
 | 12 | [Color lookup: validated grids, interpolation and limited ICC conversion](docs/devlog/12-color-lookup.md) |
+| 13 | [Invert: channel tables and shared compositing](docs/devlog/13-invert.md) |
 
 Historical source-release episode numbering differs from the current journal order. Source UI strings remain unchanged.
 
@@ -74,7 +75,7 @@ Photoshot is an independent project, not an Adobe product. A free editor is not 
 src/                 Editor UI, document model and rendering/adjustment code
 src/vendor/lcms/     Bundled ICC engine and its original license notices
 tests/               Rendering, adjustment and compatibility checks
-docs/devlog/         English engineering notes 1–12 and local images
+docs/devlog/         English engineering notes 1–13 and local images
 docs/examples/       Small LUT examples
 ```
 

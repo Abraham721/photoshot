@@ -1,4 +1,4 @@
-# Photoshot engineering notes — Parts 1–12
+# Photoshot engineering notes — Parts 1–13
 Concise implementation notes for the public editor snapshot. Each entry links to the full website article for development context and photo examples.
 | Part | Technical focus |
 |---|---|
@@ -14,6 +14,7 @@ Concise implementation notes for the public editor snapshot. Each entry links to
 | 10 | [Photo filter: compiled color matrix versus layer compositing](10-photo-filter.md) |
 | 11 | [Channel mixer: RGB weights, constants and monochrome](11-channel-mixer.md) |
 | 12 | [Color lookup: validated grids, interpolation and limited ICC conversion](12-color-lookup.md) |
+| 13 | [Invert: channel tables and shared compositing](13-invert.md) |
 
 These notes cover implementation contracts, selected code excerpts, compatibility decisions and validation scope. They do not duplicate the full narrative. Source links pin existing commits or v0.16.0; editorial updates do not change the editor implementation.
 [Website journal](https://slohero.com/photoshot/journal/?lang=en) · [Repository setup](../../README.md)
