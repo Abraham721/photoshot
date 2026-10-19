@@ -6,13 +6,13 @@
 
 ![Actual Photoshot workspace](docs/devlog/images/01-workspace.webp)
 
-## What's new in v0.16.2
+## Engineering updates
 
-Parts 1–10 are now concise English engineering notes: implementation boundaries, selected code, revision compatibility and validation scope. Each note links to its full website article. The website remains the complete development journal; Naver carries the development narrative in accessible Korean, with less code detail.
+Parts 1–11 are now concise English engineering notes: implementation boundaries, selected code, revision compatibility and validation scope. Each note links to its full website article. The website remains the complete development journal; Naver carries the development narrative in accessible Korean, with less code detail.
 
-This release changes documentation and version metadata only. Editor implementation remains the public v0.16.0 snapshot. Original Photoshot code is public source without an open-source license grant; see [COPYRIGHT.md](COPYRIGHT.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+These editorial updates extend the engineering notes. Editor implementation remains the public v0.16.0 snapshot. Original Photoshot code is public source without an open-source license grant; see [COPYRIGHT.md](COPYRIGHT.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
-## Engineering notes: Parts 1–10
+## Engineering notes: Parts 1–11
 
 | Part | Technical focus |
 |---|---|
@@ -26,6 +26,7 @@ This release changes documentation and version metadata only. Editor implementat
 | 08 | [Color balance: revision branches and sequential tonal responses](docs/devlog/08-color-balance.md) |
 | 09 | [Black & white: six hue weights, neutral invariance, and tint](docs/devlog/09-black-white.md) |
 | 10 | [Photo filter: compiled color matrix versus layer compositing](docs/devlog/10-photo-filter.md) |
+| 11 | [Channel mixer: RGB weights, constants and monochrome](docs/devlog/11-channel-mixer.md) |
 
 Historical source-release episode numbering differs from the current journal order. Source UI strings remain unchanged.
 
@@ -72,7 +73,7 @@ Photoshot is an independent project, not an Adobe product. A free editor is not 
 src/                 Editor UI, document model and rendering/adjustment code
 src/vendor/lcms/     Bundled ICC engine and its original license notices
 tests/               Rendering, adjustment and compatibility checks
-docs/devlog/         English development articles 1–10 and local images
+docs/devlog/         English engineering notes 1–11 and local images
 docs/examples/       Small LUT examples
 ```
 
